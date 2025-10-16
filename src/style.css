@@ -87,6 +87,9 @@ button:focus {
   transition: all 0.3s ease-out 0s !important;
   padding: 0.3rem 2rem !important;
   font-size: 1.2rem !important;
+  width: 100%;
+  z-index: 2000;
+  -webkit-backface-visibility: hidden;
 }
 
 .navbar-toggler {
@@ -115,7 +118,6 @@ button:focus {
 .navbar-toggler span:nth-child(1),
 .navbar-toggler span:nth-child(3) {
   transition: transform 0.35s ease-in-out !important;
-  transition: transform 0.35s ease-in-out !important;
 }
 
 .navbar-toggler:not(.collapsed) span:nth-child(1) {
@@ -142,8 +144,8 @@ button:focus {
 
 @media (max-width: 767px) {
   .navbar {
-    padding: 1rem 2rem !important;
-    font-size: 1.4rem !important;
+    padding: 1rem 1rem !important;
+    font-size: 1.1rem !important;
     background-color: #181a27 !important;
   }
   .navbar-nav .nav-item a::after {
@@ -171,7 +173,8 @@ button:focus {
 
 @media (max-width: 767px) {
   .nav-link {
-    padding: 0.7rem 1rem !important;
+    padding: 0.6rem 0.6rem !important;
+    font-size: 0.98rem !important;
   }
 }
 
@@ -223,9 +226,11 @@ button:focus {
   overflow: hidden !important;
   object-fit: cover !important;
   aspect-ratio: 1 / 1 !important; /* keep square shape so border-radius makes a perfect circle */
-  width: 160px !important; /* adjust as needed (use a different value or remove to inherit container sizing) */
+  width: 160px !important; /* default desktop avatar */
   height: 160px !important;
   display: block !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
 }
 
 /* ...existing code... */
@@ -261,6 +266,7 @@ button:focus {
   background-size: cover !important;
   width: 100%;
   height: 100%;
+  pointer-events: none;
 }
 
 .home-header {
@@ -275,6 +281,7 @@ button:focus {
   background-repeat: no-repeat;
   padding-bottom: 30px !important;
   padding-top: 30px !important;
+  background-size: cover;
 }
 
 .home-content {
@@ -286,11 +293,13 @@ button:focus {
 .heading {
   font-size: 2.4em !important;
   padding-left: 50px !important;
+  line-height: 1.05;
 }
 
 .heading-name {
   font-size: 2.5em !important;
   padding-left: 45px !important;
+  line-height: 1.02;
 }
 
 .main-name {
@@ -307,14 +316,36 @@ button:focus {
   color: #b562d6 !important;
 }
 
+@media (max-width: 991px) {
+  .home-content {
+    padding: 6rem 0 1.5rem !important;
+  }
+  .heading,
+  .heading-name {
+    padding-left: 20px !important;
+  }
+}
+
 @media (max-width: 767px) {
   .Typewriter__wrapper {
-    font-size: 1.4em !important;
+    font-size: 1.25rem !important;
     font-weight: 500 !important;
-    position: absolute !important;
+    position: static !important;
   }
   .Typewriter__cursor {
     display: none !important;
+  }
+  .home-content {
+    padding: 3.5rem 0 1rem !important;
+    text-align: center !important;
+  }
+  .heading {
+    font-size: 1.6em !important;
+    padding-left: 0 !important;
+  }
+  .heading-name {
+    font-size: 1.8em !important;
+    padding-left: 0 !important;
   }
 }
 
@@ -325,9 +356,17 @@ button:focus {
 
 @media (max-width: 767px) {
   .myAvtar {
-    padding-top: 2em !important;
-    padding-bottom: 2em !important;
+    padding-top: 2rem !important;
+    padding-bottom: 1rem !important;
+    display: flex;
+    justify-content: center !important;
   }
+}
+
+/* Adjust avatar hover on larger screens */
+.img-fluid:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.55);
 }
 
 .home-about-section {
@@ -581,6 +620,8 @@ button:focus {
 @media (max-width: 767px) {
   .tech-icons {
     margin: 10px !important;
+    font-size: 3.2em !important;
+    padding: 8px !important;
   }
 }
 
@@ -753,4 +794,186 @@ button:focus {
 }
 .fork-btn-inner::after {
   display: none !important;
+}
+
+/* ----------------------------- */
+/* Mobile / Responsive Enhancements
+   Keeps original desktop styles intact and overrides for small screens
+/* ----------------------------- */
+
+@media (max-width: 991px) {
+  /* reduce large paddings for tablets */
+  .project-section,
+  .about-section,
+  .resume-section {
+    padding-top: 90px !important;
+  }
+  .project-card,
+  .blog-card {
+    padding-top: 30px !important;
+    padding-bottom: 30px !important;
+  }
+  .card-img-top {
+    padding: 12px !important;
+  }
+  .home-content {
+    padding: 5rem 0 1rem !important;
+  }
+}
+
+@media (max-width: 767px) {
+  /* navbar */
+  .navbar {
+    padding: 0.6rem 1rem !important;
+    font-size: 1rem !important;
+    background-color: #181a27 !important;
+    z-index: 100000 !important;
+  }
+  .navbar-nav .nav-item {
+    margin-left: 8px;
+  }
+
+  /* home / hero */
+  .home-content {
+    padding: 3.2rem 0 1rem !important;
+    text-align: center !important;
+  }
+  .heading,
+  .heading-name {
+    padding-left: 0 !important;
+    text-align: center !important;
+  }
+  .heading {
+    font-size: 1.6em !important;
+  }
+  .heading-name {
+    font-size: 1.8em !important;
+  }
+  .Typewriter__wrapper {
+    font-size: 1.1em !important;
+    font-weight: 500 !important;
+    position: static !important;
+  }
+  .Typewriter__cursor {
+    display: none !important;
+  }
+
+  /* avatar / images */
+  .img-fluid {
+    width: 110px !important;
+    height: 110px !important;
+    aspect-ratio: 1 / 1 !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+  }
+  .myAvtar {
+    padding-top: 2.5rem !important;
+    padding-bottom: 1rem !important;
+    justify-content: center !important;
+  }
+
+  /* projects/cards */
+  .project-section {
+    padding-top: 60px !important;
+    padding-bottom: 30px !important;
+  }
+  .project-card,
+  .blog-card {
+    padding: 18px !important;
+  }
+  .project-card-view,
+  .blog-card-view {
+    padding: 12px !important;
+  }
+  .card-img-top {
+    padding: 12px !important;
+  }
+
+  /* tech icons */
+  .tech-icons {
+    font-size: 2.6em !important;
+    margin: 8px !important;
+    padding: 8px !important;
+    border-width: 1.2px !important;
+  }
+
+  /* resume */
+  .resume-section {
+    padding-top: 60px !important;
+  }
+  .resume-left,
+  .resume-right {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+
+  /* footer */
+  .footer {
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+  }
+
+  /* social icons smaller */
+  .home-social-icons {
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 1rem !important;
+    line-height: 2.25rem !important;
+  }
+  .home-social-icons::before {
+    transform: scale(0.95);
+  }
+
+  /* Reduce large headings elsewhere */
+  .project-heading {
+    font-size: 1.6em !important;
+  }
+  .project-card-view,
+  .blog-card-view {
+    font-size: 0.95rem !important;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 480px) {
+  .heading {
+    font-size: 1.4em !important;
+  }
+  .heading-name {
+    font-size: 1.6em !important;
+  }
+  .img-fluid {
+    width: 90px !important;
+    height: 90px !important;
+  }
+  .Typewriter__wrapper {
+    font-size: 1em !important;
+  }
+  .tech-icons {
+    font-size: 2em !important;
+    margin: 6px !important;
+    padding: 6px !important;
+  }
+  .project-card,
+  .blog-card {
+    padding: 12px !important;
+  }
+  .navbar-nav .nav-link {
+    padding-left: 0.6rem !important;
+    padding-right: 0.6rem !important;
+    font-size: 0.95rem !important;
+  }
+  .resume .resume-title {
+    font-size: 1.4em !important;
+  }
+  .card-img-top {
+    padding: 8px !important;
+  }
+  /* Make sure text wraps nicely */
+  .home-about-body,
+  .home-about-description,
+  .project-card-view,
+  .blog-card-view {
+    word-break: break-word;
+  }
 }

@@ -21,12 +21,14 @@ const projects = [
     imgPath: "/image copy.png",
   },
   {
-    title: "E-commerce Platform",
-    description: "Scalable online store with payments and admin dashboard.",
+    title: "Bruh Lifelog App",
+    description:
+      "A modern content and life-tracking platform featuring user authentication, personalized dashboards, and a clean, responsive UI built with Next.js.",
     link: "https://lifelog-beta.vercel.app/",
     ghLink: "https://github.com/HailuBoc/lifelog",
     imgPath: "/lifelog.jpg",
   },
+
   {
     title: "Farmers Marketplace",
     description:

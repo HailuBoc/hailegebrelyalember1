@@ -226,13 +226,24 @@ button:focus {
   overflow: hidden !important;
   object-fit: cover !important;
   aspect-ratio: 1 / 1 !important; /* keep square shape so border-radius makes a perfect circle */
-  width: 160px !important; /* default desktop avatar */
-  height: 160px !important;
+  width: 100px !important; /* default desktop avatar */
+  height: 100px !important;
   display: block !important;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
 }
-
+.img-fluids {
+  /* make img-fluid display as a circular avatar (increased size) */
+  border-radius: 50% !important;
+  overflow: hidden !important;
+  object-fit: cover !important;
+  aspect-ratio: 1 / 1 !important; /* keep square shape so border-radius makes a perfect circle */
+  width: 350px !important; /* increased desktop avatar */
+  height: 350px !important;
+  display: block !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+}
 /* ...existing code... */
 @keyframes wave-animation {
   0% {

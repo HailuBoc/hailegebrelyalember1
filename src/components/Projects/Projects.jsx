@@ -23,9 +23,17 @@ const projects = [
   {
     title: "E-commerce Platform",
     description: "Scalable online store with payments and admin dashboard.",
-    link: "#",
-    ghLink: "https://github.com/haseralem/ecommerce-platform",
-    imgPath: "/e-commerce.jpg",
+    link: "https://lifelog-beta.vercel.app/",
+    ghLink: "https://github.com/HailuBoc/lifelog",
+    imgPath: "/lifelog.jpg",
+  },
+  {
+    title: "Farmers Marketplace",
+    description:
+      "A full-stack platform where farmers can sell products, manage inventory, handle orders, and connect with buyers through a modern and secure marketplace.",
+    link: "https://your-live-link-here.com", // add your deployed link if available
+    ghLink: "https://github.com/HailuBoc/farmer_marketplace",
+    imgPath: "/farmers_marketplace.png", // change to your actual image file
   },
 ];
 

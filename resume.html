@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resume — Hailegebrel Yalember</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #000;
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    canvas#bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #00d4ff;
+    }
+
+    .resume-container {
+      max-width: 900px;
+      margin: 80px auto;
+      padding: 20px;
+      text-align: center;
+      animation: fadeIn 1.2s ease forwards;
+      position: relative;
+      z-index: 5;
+    }
+
+    .resume-card {
+      background: rgba(17, 17, 17, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 40px;
+      margin-top: 40px;
+      backdrop-filter: blur(6px);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .resume-card:hover {
+      transform: perspective(800px) rotateX(8deg) rotateY(-8deg) scale(1.03);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .resume-title {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+      color: #00d4ff;
+    }
+
+    .resume-desc {
+      opacity: 0.8;
+      font-size: 1.1rem;
+    }
+
+    .resume-btn {
+      margin-top: 30px;
+      display: inline-block;
+      padding: 14px 30px;
+      font-size: 1.1rem;
+      background: #00d4ff;
+      color: #000;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .resume-btn:hover {
+      background: #009bbd;
+    }
+
+    footer {
+      margin-top: 120px;
+      text-align: center;
+      opacity: 0.6;
+      padding: 20px;
+      position: relative;
+      z-index: 5;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <canvas id="bg"></canvas>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="resume.html" style="color:#00d4ff">Resume</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section class="resume-container">
+    <h1 class="resume-title">My Resume</h1>
+    <p class="resume-desc">
+      A complete overview of my expertise, experience, and technical abilities.  
+      Download the PDF below to view the full resume.
+    </p>
+
+    <div class="resume-card">
+      <h2>Resume — PDF Version</h2>
+      <p>Click below to download the full document.</p>
+      <a href="./Assets/Resume.pdf" download class="resume-btn">Download Resume</a>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 — Designed & Developed by <b>Hailegebrel Yalember</b>
+  </footer>
+
+
+  <!-- 3D PARTICLE BACKGROUND SCRIPT -->
+  <script type="module">
+    import * as THREE from 'three';
+
+    const canvas = document.getElementById("bg");
+    const scene = new THREE.Scene();
+
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000
+    );
+
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+
+    camera.position.z = 5;
+
+    // Particle geometry
+    const particles = new THREE.BufferGeometry();
+    const particleCount = 1500;
+
+    const positions = new Float32Array(particleCount * 3);
+
+    for (let i = 0; i < particleCount * 3; i++) {
+      positions[i] = (Math.random() - 0.5) * 20;
+    }
+
+    particles.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+
+    const particleMaterial = new THREE.PointsMaterial({
+      color: 0x00d4ff,
+      size: 0.03,
+    });
+
+    const particleMesh = new THREE.Points(particles, particleMaterial);
+    scene.add(particleMesh);
+
+    // Animation loop
+    function animate() {
+      requestAnimationFrame(animate);
+
+      particleMesh.rotation.y += 0.0008;
+      particleMesh.rotation.x += 0.0004;
+
+      renderer.render(scene, camera);
+    }
+
+    animate();
+
+    // Resize handling
+    window.addEventListener("resize", () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+  </script>
+
+</body>
+</html>

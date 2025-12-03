@@ -21,6 +21,7 @@
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
@@ -34,7 +35,7 @@
     <div id="loader">
       <div class="loader-inner">
         <div class="loader-orbit"></div>
-        <p>Experienced Developer</p>
+        <p>Crafting experiences…</p>
       </div>
     </div>
 
@@ -58,16 +59,9 @@
 
       <nav class="site-nav">
         <ul>
-          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#about" class="nav-link active">About</a></li>
           <li><a href="#projects" class="nav-link">Projects</a></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
-          <li>
-            <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="nav-link nav-resume-btn">
-              <span class="resume-btn-text">Resume</span>
-              <span class="resume-btn-icon"><i class="fa-solid fa-file-pdf"></i></span>
-              <span class="resume-btn-ripple"></span>
-            </a>
-          </li>
         </ul>
       </nav>
     </header>
@@ -107,24 +101,8 @@
               <span>MongoDB</span>
               <span>Laravel</span>
               <span>Three.js</span>
-              <span>Github</span>
-              <span>Git</span>
-              <span>Supabase</span>
             </div>
           </div>
-          <div class="github-section observer-fade">
-            <h3 class="github-title">GitHub Contribution Activity</h3>
-          
-            <div class="github-graph-card tilt">
-              <img 
-                src="https://ghchart.rshah.org/00e676/HailuBoc"
-                alt="GitHub Contribution Chart"
-                class="github-chart"
-              />
-            </div>
-          </div>
-          
-          
         </div>
 
         <div class="hero-side">
@@ -245,12 +223,12 @@
             </p>
 
             <div class="contact-links">
-              <a href="hailegebrelyalember@gmail.com" class="contact-link">
+              <a href="mailto:hailegebrelyalember@example.com" class="contact-link">
                 <i class="fa-solid fa-envelope"></i>
-                <span>hailegebrelyalember@gmail.com</span>
+                <span>hailegebrelyalember@example.com</span>
               </a>
               <a
-                href="https://www.linkedin.com/in/hailegebrel-yalember-5158712bb/"
+                href="https://www.linkedin.com"
                 target="_blank"
                 rel="noreferrer"
                 class="contact-link"
@@ -259,7 +237,7 @@
                 <span>LinkedIn</span>
               </a>
               <a
-                href="https://x.com/hailu30537"
+                href="https://x.com"
                 target="_blank"
                 rel="noreferrer"
                 class="contact-link"
@@ -270,7 +248,7 @@
             </div>
           </div>
 
-          <form id="contact-form" class="contact-form">
+          <form class="contact-form" action="mailto:hailegebrelyalember@example.com" method="post">
             <div class="form-row">
               <div class="form-field">
                 <label for="name">Name</label>
@@ -292,9 +270,7 @@
             <button type="submit" class="btn primary full-width">
               Send Message
             </button>
-            <p id="form-status" style="margin-top:10px;"></p>
           </form>
-          
         </div>
       </section>
     </main>
@@ -310,46 +286,10 @@
     <!-- Scripts -->
     <script type="module" src="./three-background.js"></script>
     <script type="module" src="./three-main.js"></script>
-    <script>
-      const form = document.getElementById('contact-form');
-      const status = document.getElementById('form-status');
-    
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault(); // prevent default form submission
-    
-        const formData = {
-          name: form.name.value,
-          email: form.email.value,
-          subject: form.subject.value,
-          message: form.message.value,
-        };
-    
-        try {
-          const response = await fetch('http://localhost:5000/contact', { // your backend URL
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
-          });
-    
-          const result = await response.json();
-    
-          if (result.success) {
-            status.style.color = 'green';
-            status.textContent = 'Message sent successfully!';
-            form.reset();
-          } else {
-            status.style.color = 'red';
-            status.textContent = 'Failed to send message. Try again.';
-          }
-        } catch (err) {
-          console.error(err);
-          status.style.color = 'red';
-          status.textContent = 'Server error. Please try again later.';
-        }
-      });
-    </script>
-    
   </body>
-</html> 
+</html>
+
+
+
+
+
